@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,12 +12,17 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 5f;
     public LayerMask groundMask;
     private Animator animator;
+    public bool grounded; //Raycast para evitar doble salto con grounded
 
     private SpriteRenderer spriteRenderer;  //Flip X
 
+
+  //  public float SegEspera = 5f; //Corutina para espera
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
+
+
     }
 
     private void Start()
@@ -31,6 +37,8 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
         Jump();
+        Debug.DrawRay(this.transform.position, Vector2.down * 20f, Color.red);
+      IsTouchingTheGround();
     }
     void Jump()
     {
@@ -42,14 +50,36 @@ public class PlayerController : MonoBehaviour
             // if (Equals(KeyCode.Space))
             // {
             //     animator.SetBool("isJumping", true);
-
+          
         }
         else
         {
             animator.SetBool("isJumping", false);
         }
     }
+    //   IEnumerator Espera()
+    //   {
+    //       yield return new WaitForSeconds(SegEspera);
+    //  }
 
+    bool IsTouchingTheGround()
+        {
+            if (Physics2D.Raycast(this.transform.position, Vector2.down, 20.0f, groundMask))
+            {
+                grounded = true;
+                return true;
+        }
+            else
+           {
+                grounded = false;
+                return false;
+        }
+        }
+   //     IEnumerator Esperar()
+   // {
+   //     float Espera = 1f;
+   //     yield return new WaitForSeconds(Espera);
+   // }
     void PlayerMovement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");

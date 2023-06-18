@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    public GameObject bulletPreFab; // Prefab de Bullet
+    public int poolSize = 10; // Size pool
 
-
-    public GameObject bulletPreFab; //Prefab de Bullet
-    public int poolSize = 10; //Size pool
     private List<GameObject> bulletPool;
 
     private void Start()
@@ -20,21 +19,23 @@ public class ObjectPool : MonoBehaviour
             GameObject bullet = Instantiate(bulletPreFab);
             bullet.SetActive(false);
             bulletPool.Add(bullet);
-        
-    }
-    }
-    public GameObject GetBulletFromPool()
-        {
-            for (int i = 0; i < bulletPool.Count; i++)
-            {
-                if (!bulletPool[i].activeInHierarchy)
-                {
-                    return bulletPool[i];
-                }
-            }
-
-            GameObject newBullet = Instantiate(bulletPreFab);
-            bulletPool.Add(newBullet);
-        return newBullet;
         }
+
+        return;
     }
+
+    public GameObject GetBulletFromPool()
+    {
+        for (int i = 0; i < bulletPool.Count; i++)
+        {
+            if (!bulletPool[i].activeInHierarchy)
+            {
+                return bulletPool[i];
+            }
+        }
+
+        GameObject newBullet = Instantiate(bulletPreFab);
+        bulletPool.Add(newBullet);
+        return newBullet;
+    }
+}

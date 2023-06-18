@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     int score = 100;
-    string playerName = "Chris"; // <<<<Nombre>>>>>
+    string playerName = "Rubi"; // <<<<Nombre>>>>>
 
         public void SafeData()
     {
@@ -24,6 +24,6 @@ public class ScoreManager : MonoBehaviour
     public void Start()
     {
         SafeData();
-            PrintData();
+        PrintData();
     }
 }

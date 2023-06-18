@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4de9d683fe740e6409fd2cf846b3b616
+guid: 7715dafb31989cd46ba3fbd7e92dcd4e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,12 +105,117 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: throw_dagger_sheet_0
+      name: attack_in_jump_sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 6
-        width: 15
+        y: 5
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d644c7c6b290f0a4ca50d26b4b14da58
+      internalID: -346096982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_in_jump_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 5
+        width: 52
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74633a12cbc8639418aa4453c4014d85
+      internalID: 813020542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_in_jump_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 5
+        width: 48
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1995a0cf7e26f44c8a15dd7297e79b5
+      internalID: 2031178887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_in_jump_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 5
+        width: 41
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a004f81ee1fe0264ca2094f7d7f86dc3
+      internalID: 1292195133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_in_jump_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 5
+        width: 25
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b48300a9b4404f4abc4ac4bae8b1f1e
+      internalID: -1506800895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_in_jump_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 33
+        width: 5
         height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -119,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44eaa8d5a98b04648a04398f14a59feb
-      internalID: -722593561
+      spriteID: 46c2636d1367c924ea6bba5ea26d7dcd
+      internalID: 504792873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: throw_dagger_sheet_1
+      name: attack_in_jump_sheet_6
       rect:
         serializedVersion: 2
-        x: 18
-        y: 0
-        width: 11
-        height: 16
+        x: 332
+        y: 5
+        width: 17
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a858f9b8d857d242ae9b113bbce2cc7
-      internalID: -1711139430
+      spriteID: 138ccdf6653d799479f224a0b789d0e4
+      internalID: -56626397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: throw_dagger_sheet_2
+      name: attack_in_jump_sheet_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 14
-        height: 16
+        x: 398
+        y: 5
+        width: 17
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,29 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d539b55531188dd489bfbe0f7b9f648c
-      internalID: -1713701435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: throw_dagger_sheet_3
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 0
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7236f429a36f48e4ba2feed5cb281390
-      internalID: -117056622
+      spriteID: 9e02fe662ea46e0439883b7e2956defe
+      internalID: -506073110
       vertices: []
       indices: 
       edges: []
@@ -199,10 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      throw_dagger_sheet_0: -722593561
-      throw_dagger_sheet_1: -1711139430
-      throw_dagger_sheet_2: -1713701435
-      throw_dagger_sheet_3: -117056622
+      attack_in_jump_sheet_0: -346096982
+      attack_in_jump_sheet_1: 813020542
+      attack_in_jump_sheet_2: 2031178887
+      attack_in_jump_sheet_3: 1292195133
+      attack_in_jump_sheet_4: -1506800895
+      attack_in_jump_sheet_5: 504792873
+      attack_in_jump_sheet_6: -56626397
+      attack_in_jump_sheet_7: -506073110
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
