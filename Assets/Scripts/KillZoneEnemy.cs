@@ -48,6 +48,7 @@ public class KillZoneEnemy : MonoBehaviour
 
             Invoke("ReactivarAtaque", cooldownAtaque);
         }
+
     }
 
     void ReactivarAtaque()

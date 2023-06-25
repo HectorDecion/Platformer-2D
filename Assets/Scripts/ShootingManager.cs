@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ShootingManager : MonoBehaviour
 {
-    public ObjectPool bulletPool;
+    ObjectPool bulletPool;
     public Transform bulletSpawnPoint;
     public float bulletSpeed = 15f;
     public GameObject bulletprefabs; //Agregado
+    private Animator animator;
     private void Start()
     {
-      //  bulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>(); //Regresa esto para clase
+        //  bulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>(); //Regresa esto para clase
+        animator = GetComponent<Animator>();
     }
 
 
@@ -19,7 +21,18 @@ public class ShootingManager : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Shoot();
+            animator.SetBool("isShooting", true);
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isJumping", false);
+            // if (Equals(KeyCode.Space))
+            // {
+            //     animator.SetBool("isJumping", true);
+
         }
+        else
+        {
+            animator.SetBool("isShooting", false);
+    }
     }
     private void Shoot()
     {

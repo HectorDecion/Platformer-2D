@@ -5,26 +5,29 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
+
     public float jumpForce = 5f;
     public float playerSpeed = 5f;
     public LayerMask groundMask;
     private Animator animator;
+
     public bool grounded; //Raycast para evitar doble salto con grounded
 
     private SpriteRenderer spriteRenderer;  //Flip X
 
 
-  //  public float SegEspera = 5f; //Corutina para espera
+    //  public float SegEspera = 5f; //Corutina para espera
+
+
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
-
-
+        //        currentHealth = maxHealth;
+        //Debug.Log(currentHealth);
     }
-
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -37,20 +40,21 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
         Jump();
-        Debug.DrawRay(this.transform.position, Vector2.down * 20f, Color.red);
+        Debug.DrawRay(this.transform.position, Vector2.down * 2f, Color.red);
       IsTouchingTheGround();
     }
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && IsTouchingTheGround())
         {
             playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
             animator.SetBool("isIdle", false);
+            animator.SetBool("isShooting", false);
             // if (Equals(KeyCode.Space))
             // {
             //     animator.SetBool("isJumping", true);
-          
+
         }
         else
         {
@@ -64,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsTouchingTheGround()
         {
-            if (Physics2D.Raycast(this.transform.position, Vector2.down, 20.0f, groundMask))
+            if (Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask))
             {
                 grounded = true;
                 return true;
@@ -75,11 +79,12 @@ public class PlayerController : MonoBehaviour
                 return false;
         }
         }
-   //     IEnumerator Esperar()
-   // {
-   //     float Espera = 1f;
-   //     yield return new WaitForSeconds(Espera);
-   // }
+    //     IEnumerator Esperar()
+    // {
+    //     float Espera = 1f;
+    //     yield return new WaitForSeconds(Espera);
+    // }
+
     void PlayerMovement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -95,12 +100,21 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isRunning", false);
-            spriteRenderer.flipX = false; // Hace que gire a la derecha con FLIP X
+         //   spriteRenderer.flipX = false; // Hace que gire a la derecha con FLIP X
+        }
+
+        if (moveHorizontal > 0f)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (moveHorizontal < 0f)
+        {
+            spriteRenderer.flipX = true;
         }
 
   //      if (spriteRenderer.flipX) //Flip X
    //     {
-            spriteRenderer.flipX = false;
+         //   spriteRenderer.flipX = false;
    //     }
   //      else
   //          spriteRenderer.flipX = true;
