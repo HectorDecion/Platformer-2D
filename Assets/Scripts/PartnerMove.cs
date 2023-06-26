@@ -14,8 +14,6 @@ public class PartnerMove : MonoBehaviour
     public Transform target;
     public float speed = .5f;
 
-    public float seekDistance = 2f;
-
     private void Start()
     {
         targetPointPartner = PointC;
@@ -26,7 +24,7 @@ public class PartnerMove : MonoBehaviour
     {
 
         MoveToPointsPartner();
-        SeekPartner();
+     
     }
 
     void MoveToPointsPartner()
@@ -48,19 +46,6 @@ public class PartnerMove : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPointPartner.position, step);
     }
 
-    void SeekPartner()
-    {
-        Vector3 seekVector = target.position - transform.position;
-        float distanceToTarget = seekVector.magnitude;
 
-
-
-        if (distanceToTarget < seekDistance)
-        {
-            Debug.DrawRay(transform.position, seekVector, Color.magenta);
-            Vector3 seekPosition = Vector3.Lerp(transform.position, target.position, Time.deltaTime);
-
-            transform.position = seekPosition;
-        }
     }
-}
+

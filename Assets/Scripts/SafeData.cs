@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SafeData : MonoBehaviour
 {
     //   public int maxHealth;
     public int score = 100;
-    public int health = 100;
+    public int health = 10;
+    public int decremento = 20;
 
     public static SafeData sharedInstance;
 
@@ -25,6 +27,7 @@ public class SafeData : MonoBehaviour
     {
     PlayerPrefs.SetInt("Score", score);
     PlayerPrefs.SetInt("Health", health);
+
    //     public void TakeDamage(int damageAmount)
      //   {
        //     currentHealth -= damageAmount;
@@ -43,15 +46,38 @@ private void OnDestroy()
 
     Debug.Log("Score Final: " + score);
     Debug.Log("Health Final: " + health);
+    }
 
-}
-    //    public void Heal(int damageAmount) 
-     //   {
+    private void Update()
+    {
+
+        watchDog();
+
+        //    public void Heal(int damageAmount) 
+        //   {
         //Limitamos la vida maxima, reproducir sonidos.
-       // if(currentHealth < 10)
-         //   {
-           //     currentHealth += healAmount;
-          //  }
-            //        }
-   // }
+        // if(currentHealth < 10)
+        //   {
+        //     currentHealth += healAmount;
+        //  }
+        //        }
+        // }
+    void watchDog()
+        { 
+     if (health >= 0)
+        {
+  
+        }
+        else
+{
+
+    Debug.Log("Haz Muerto");
+                PlayerPrefs.GetInt("Score", score);
+                score -= decremento;
+                PlayerPrefs.Save();
+                SceneManager.LoadScene(3);
+                Debug.Log("Score" + score);
+            }
+}
+    }
 }

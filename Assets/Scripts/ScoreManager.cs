@@ -5,20 +5,24 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     int score = 100;
-    string playerName = "Rubi"; // <<<<Nombre>>>>>
+    int Health = 3;
+    string playerN; // <<<<Nombre>>>>>
 
         public void SafeData()
     {
         PlayerPrefs.SetInt("Score", score);
-        PlayerPrefs.SetString("PlayerName", playerName);
+        PlayerPrefs.GetString("PlayerName", playerN);
+        PlayerPrefs.SetInt("Health", Health);
     }
 
     public void PrintData()
     {
         int loadedScore = PlayerPrefs.GetInt("Score");
         string loadedPlayerName = PlayerPrefs.GetString("PlayerName");
+        int loadedHealth = PlayerPrefs.GetInt("Health");
         Debug.Log("Player Points: " + loadedScore);
         Debug.Log("Name: "+ loadedPlayerName);
+        Debug.Log("Health: " + loadedHealth);
     }
 
     public void Start()

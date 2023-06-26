@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterHealth : MonoBehaviour
 {
@@ -15,20 +16,24 @@ public class CharacterHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        currentHealth -= damageAmount;
+     //   currentHealth -= damageAmount;
 
         //Comprobar si el personaje murio, reproducir sonidos.
-      SafeData.sharedInstance.health -= damageAmount;
-
+      
+        
         //Debug.Log(currentHealth);
-        //if(currentHealth <= 0)
-        //{
-        //    currentHealth -= damageAmount;
-        //}
-        //else
-        //{
-        //    Debug.Log("Haz Muerto");
-        //}
+        if(currentHealth <= 0)
+        {
+            currentHealth -= damageAmount;
+            SafeData.sharedInstance.health -= damageAmount;
+            Debug.Log("Vidas: " + currentHealth);
+        }
+        else
+        {
+           
+            SceneManager.LoadScene(3);
+            Debug.Log("Haz Muerto");
+        }
     }
 
     public void Heal(int healAmount)

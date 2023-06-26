@@ -21,6 +21,8 @@ using UnityEngine;
 
     //  public float SegEspera = 5f; //Corutina para espera
 
+ //   Vector3 startPosition;
+
 
     private void Awake()
     {
@@ -32,16 +34,22 @@ using UnityEngine;
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>(); //Flip X
+  //      startPosition = this.transform.position;
     }
-    private void FixedUpdate()
+
+    public void StartGame()
     {
+        PlayerMovement();
+        //    this.transform.position = startPosition;
+        //      this.playerRB.velocity = Vector2.zero;
     }
     private void Update()
     {
         PlayerMovement();
         Jump();
         Debug.DrawRay(this.transform.position, Vector2.down * 2f, Color.red);
-      IsTouchingTheGround();
+        Debug.DrawRay(this.transform.position, Vector2.one * 2f, Color.red);
+        IsTouchingTheGround();
     }
     void Jump()
     {
@@ -61,14 +69,9 @@ using UnityEngine;
             animator.SetBool("isJumping", false);
         }
     }
-    //   IEnumerator Espera()
-    //   {
-    //       yield return new WaitForSeconds(SegEspera);
-    //  }
-
     bool IsTouchingTheGround()
         {
-            if (Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask))
+            if (Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask) || (Physics2D.Raycast(this.transform.position, Vector2.one, 1.5f, groundMask)))
             {
                 grounded = true;
                 return true;
@@ -78,6 +81,7 @@ using UnityEngine;
                 grounded = false;
                 return false;
         }
+
         }
     //     IEnumerator Esperar()
     // {

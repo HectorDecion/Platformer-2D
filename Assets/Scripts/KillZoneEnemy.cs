@@ -1,64 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class KillZoneEnemy : MonoBehaviour
 {
-    //   private void OnCollisionEnter(Collider collision)
-    //   {
-    //       if (collision.tag == "Player")
-    //       {
-    //           PlayerMovement movement = collision.GetComponent<PlayerMovement>();
-    //           movement.DieEnemy();
-    //       }
-
-    //   }
-    //}
-
-    public float cooldownAtaque;
-    private bool puedeAtacar = true;
-    private SpriteRenderer spriteRenderer;
-
-    void Start()
+    int pbHealth;
+    int score;
+    int decremento = 20;
+    private Rigidbody2D playerRB;
+    public GameObject SpawnPoint;
+    public CharacterHealth characterHealth;
+    public int damageAmount = 1;
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        SafeData.sharedInstance.health = pbHealth;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            //     private void OnCollisionEnter2D(Collision2D collision)
+            //     {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                characterHealth.TakeDamage(damageAmount);
+                playerRB.gameObject.transform.position = SpawnPoint.transform.position;
+
+                //       Destroy(Player, 3f);
+
+            }
+        }
+        if (pbHealth >= 0)
         {
 
-            // Si no puede atacar salimos de la función.
-            if (!puedeAtacar) return;
-
-            // Desactivamos el ataque.
-            puedeAtacar = false;
-
-            // Cambiamos la opacidad del sprite.
-            Color color = spriteRenderer.color;
-            color.a = 0.5f;
-            spriteRenderer.color = color;
-
-            // Perdemos una vida.
-   //         GameManager.Instance.PerderVida();
-
-            // Aplicamos golpe al personaje.
-   //         other.gameObject.GetComponent<PlayerMovement>().AplicarGolpe();
-
-            Invoke("ReactivarAtaque", cooldownAtaque);
+            Debug.Log("Vidas: " + pbHealth);
+            PlayerPrefs.GetInt("Score", score);
+            score -= decremento;
+            PlayerPrefs.Save();
+            Debug.Log("Score" + score);
+        }
+        else
+        {
+            SceneManager.LoadScene(3);
+            Debug.Log("Haz Muerto");
         }
 
-    }
+        //  public GameObject Player;              ///////USALO SI NO ACABAS, MATA AL TOQUE///////
+        //   private void OnCollisionEnter2D(Collision2D collision)
+        //    {
+        //        if (collision.gameObject.CompareTag("Player"))
+        //       {
+        //     characterHealth.TakeDamage(damageAmount);
+        //  Debug.Log("Haz Muerto");
 
-    void ReactivarAtaque()
-    {
-        puedeAtacar = true;
-
-        // Cambiamos la opacidad del sprite.
-        Color c = spriteRenderer.color;
-        c.a = 1f;
-        spriteRenderer.color = c;
+        //  Destroy(Player, .5f);
+        //          SceneManager.LoadScene(3);
+        //        }
+        //    }  
     }
 }
 
