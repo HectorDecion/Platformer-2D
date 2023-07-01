@@ -972,6 +972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundAudio: {fileID: 1664575314}
+  Hit: {fileID: 0}
+  MissHit: {fileID: 0}
+  DeadZone: {fileID: 0}
 --- !u!4 &2052077881
 Transform:
   m_ObjectHideFlags: 0

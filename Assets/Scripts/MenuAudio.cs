@@ -1,26 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class MenuAudio : MonoBehaviour
 {
     public AudioSource backgroundAudio;
-    public AudioSource Hit;
-    public AudioSource MissHit; 
-    public AudioSource DeadZone;
+
     //  public AudioSource buttonFX;
+
 
     private void Start()
     {
-        backgroundAudio.Play();
-        Hit.Stop();
-        MissHit.Stop();
-        DeadZone.Stop();
+        PlaySound();
 
     }
     public void PlaySound()
     {
-     //   buttonFX.Play();
+        backgroundAudio.Play();
+        //   buttonFX.Play();
     }
 }
 

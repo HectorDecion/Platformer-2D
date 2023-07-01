@@ -9,12 +9,13 @@ public class IntroAudio : MonoBehaviour
 
     private void Start()
     {
-        backgroundAudio.Play();
+        PlaySound();
 
     }
     public void PlaySound()
     {
         //   buttonFX.Play();
-
+        backgroundAudio.playOnAwake = true;
+        backgroundAudio.Play();
     }
 }

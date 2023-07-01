@@ -25,6 +25,15 @@ public class Pausa : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+    public void Exit()
+    {
+        int loadedScore = PlayerPrefs.GetInt("Score");
+        string loadedPlayerName = PlayerPrefs.GetString("PlayerName");
+        Debug.Log("Player Points: " + loadedScore);
+        Debug.Log("Name: " + loadedPlayerName);
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
     //Nombre en barra de Texto al inicio
     public void ReadStringInput(string PlayerName)
     {

@@ -27,6 +27,10 @@ public class BulletMovement : MonoBehaviour
         bulletRB = GetComponent<Rigidbody2D>();//Llamamos a la componente del rigidbody de la bala.
         player = GameObject.FindGameObjectWithTag("Player"); //encontrar el jugador
         playerTrans = playerTrans.transform;
+       boomSound = GetComponent<AudioSource>();
+        boomSound2 = GetComponent<AudioSource>();
+   //     boomSound.enabled = true;
+   //     boomSound2.enabled = true;
     }
     private void Start()
     {
@@ -63,10 +67,12 @@ public class BulletMovement : MonoBehaviour
                 GetComponent<ParticleSystem>().Play();
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<Collider2D>().enabled = false;
+                boomSound.playOnAwake = true;
                 boomSound.Play();
             }
             else
             {
+                boomSound2.playOnAwake = true;
                 boomSound2.Play();
         }
     }
@@ -82,10 +88,13 @@ public class BulletMovement : MonoBehaviour
             GetComponent<ParticleSystem>().Play();
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
+            boomSound.playOnAwake = true;
             boomSound.Play();
         }
         else
         {
+
+            boomSound2.playOnAwake = true;
             boomSound2.Play();
     }
         if (coll.gameObject.tag == "Boss")
@@ -101,11 +110,14 @@ public class BulletMovement : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
             SceneManager.LoadScene(4);
+            boomSound.playOnAwake = true;
             boomSound.Play();
         }
         else
             {
-                boomSound2.Play();
+
+            boomSound2.playOnAwake = true;
+            boomSound2.Play();
            
         }
 }
