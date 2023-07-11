@@ -16,6 +16,7 @@ public class BulletMovement : MonoBehaviour
     public AudioSource boomSound2;
     public static int damage;
     public int damageRef = 1;
+    public int TiempoEspera = 10;
     //Termina Shooting Manager
 
     private SpriteRenderer spriteRenderer;
@@ -45,16 +46,19 @@ public class BulletMovement : MonoBehaviour
             bulletRB.velocity = new Vector2(-bulletSpeed, bulletRB.velocity.y);
             transform.localScale = new Vector3(11, 11, 1);
         }
+        Espera();
     }
     private void Update()
     {
+        Espera();
         Destroy(gameObject, bulletlife); //destruccion de la bala
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-       
+
         {
+            
             if (coll.gameObject.tag == "Enemy")
               //  if (collision.gameObject.CompareTag("Enemy"))
            {
@@ -74,7 +78,8 @@ public class BulletMovement : MonoBehaviour
             {
                 boomSound2.playOnAwake = true;
                 boomSound2.Play();
-        }
+                Espera();
+            }
     }
         if (coll.gameObject.tag == "Enemy1")
         //  if (collision.gameObject.CompareTag("Enemy"))
@@ -96,7 +101,8 @@ public class BulletMovement : MonoBehaviour
 
             boomSound2.playOnAwake = true;
             boomSound2.Play();
-    }
+            Espera();
+        }
         if (coll.gameObject.tag == "Boss")
         //  if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -118,7 +124,17 @@ public class BulletMovement : MonoBehaviour
 
             boomSound2.playOnAwake = true;
             boomSound2.Play();
+            Espera();
+            
            
         }
-}
+
+    }
+    IEnumerator Espera()
+    {
+        print(Time.time);
+        yield return new WaitForSecondsRealtime(TiempoEspera);
+        print(Time.time);
+
+    }
 }

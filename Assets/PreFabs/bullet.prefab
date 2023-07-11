@@ -4958,6 +4958,7 @@ MonoBehaviour:
   boomSound: {fileID: -6586719777744874382}
   boomSound2: {fileID: 4335320524427899422}
   damageRef: 1
+  TiempoEspera: 10
 --- !u!82 &-6586719777744874382
 AudioSource:
   m_ObjectHideFlags: 0

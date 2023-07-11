@@ -19,6 +19,7 @@ public class MenuAudio : MonoBehaviour
     }
     public void PlaySound()
     {
+        backgroundAudio.playOnAwake = true;
         backgroundAudio.Play();
         //   buttonFX.Play();
     }

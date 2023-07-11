@@ -21,7 +21,7 @@ using UnityEngine;
 
     //  public float SegEspera = 5f; //Corutina para espera
 
- //   Vector3 startPosition;
+    //   Vector3 startPosition;
 
 
     private void Awake()
@@ -34,7 +34,7 @@ using UnityEngine;
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>(); //Flip X
-  //      startPosition = this.transform.position;
+                                                         //      startPosition = this.transform.position;
     }
 
     public void StartGame()
@@ -70,19 +70,19 @@ using UnityEngine;
         }
     }
     bool IsTouchingTheGround()
+    {
+        if (Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask) || (Physics2D.Raycast(this.transform.position, Vector2.one, 1.5f, groundMask)))
         {
-            if (Physics2D.Raycast(this.transform.position, Vector2.down, 1.5f, groundMask) || (Physics2D.Raycast(this.transform.position, Vector2.one, 1.5f, groundMask)))
-            {
-                grounded = true;
-                return true;
+            grounded = true;
+            return true;
         }
-            else
-           {
-                grounded = false;
-                return false;
+        else
+        {
+            grounded = false;
+            return false;
         }
 
-        }
+    }
     //     IEnumerator Esperar()
     // {
     //     float Espera = 1f;
@@ -98,13 +98,13 @@ using UnityEngine;
         playerRB.AddForce(movement * playerSpeed); //movement * speed * Time.deltaTime;
         if (moveHorizontal != 0f)
         {
-           animator.SetBool("isRunning", true);
+            animator.SetBool("isRunning", true);
 
         }
         else
         {
             animator.SetBool("isRunning", false);
-         //   spriteRenderer.flipX = false; // Hace que gire a la derecha con FLIP X
+            //   spriteRenderer.flipX = false; // Hace que gire a la derecha con FLIP X
         }
 
         if (moveHorizontal > 0f)
@@ -116,13 +116,19 @@ using UnityEngine;
             spriteRenderer.flipX = true;
         }
 
-  //      if (spriteRenderer.flipX) //Flip X
-   //     {
-         //   spriteRenderer.flipX = false;
-   //     }
-  //      else
-  //          spriteRenderer.flipX = true;
+        //      if (spriteRenderer.flipX) //Flip X
+        //     {
+        //   spriteRenderer.flipX = false;
+        //     }
+        //      else
+        //          spriteRenderer.flipX = true;
 
     }
 
 }
+
+
+
+
+
+
